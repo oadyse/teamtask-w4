@@ -13,7 +13,7 @@ const Header = () => {
         <SearchInput >
         <div>
                      {/* <MdSearch className='search-icons' size='0.5em' /> */}
-                     <input type='text' placeholder='type here to search...' />
+                     <input type='text' placeholder='type here to search....' />
         </div>
         </SearchInput>
       </StSearch>
