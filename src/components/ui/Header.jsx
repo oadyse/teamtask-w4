@@ -2,13 +2,23 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Search  from "./Search";
+import { MdSearch } from 'react-icons/md';
+
+
 
 const Header = () => {
   const navigate = useNavigate();
   return (
     <StContainer>
       <div>EMPLOYEE CARD</div>
-      <Search />
+      <StSearch>
+        <SearchInput >
+        <div>
+                     <MdSearch className='search-icons' size='1.3em' />
+                     <input type='text' placeholder='type to search...' />
+        </div>
+        </SearchInput>
+      </StSearch>
         <StButton onClick={() => {
                 navigate("/form");
               }}> 
@@ -18,6 +28,23 @@ const Header = () => {
   );
 };
 export default Header;
+
+const StSearch = styled.div`
+  display: flex;
+  align-items: center;
+  background-color: 10px;
+  padding: 0px;
+  margin-top: -5px;
+  margin-bottom: -20px;
+  margin-left: 450px;
+`;
+
+const SearchInput = styled.div`
+  border: none;
+  /* background-color: rgb(233, 233, 233); */
+`;
+
+
 
 const StContainer = styled.div`
   background-color: #2ca6d6;
