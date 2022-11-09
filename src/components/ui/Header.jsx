@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 import Search  from "./Search";
 import { MdSearch } from 'react-icons/md';
 
-
-
 const Header = () => {
   const navigate = useNavigate();
   return (
