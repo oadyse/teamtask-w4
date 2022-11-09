@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTodo, toggleStatusTodo } from "../../../redux/modules/todos.js";
+import { deleteTodo } from "../../../redux/modules/todos.js";
 import { Link } from "react-router-dom";
 
 const List = () => {
@@ -10,10 +10,6 @@ const List = () => {
 
   const onDeleteTodo = (id) => {
     dispatch(deleteTodo(id));
-  };
-
-  const onToggleStatusTodo = (id) => {
-    dispatch(toggleStatusTodo(id));
   };
 
   return (
@@ -30,8 +26,8 @@ const List = () => {
                   ❌
                 </StButton>
                 <div>
-                  <h2 className="todo-title">{todo.title}</h2>
-                  <div>{todo.body}</div>
+                  <h2 className="todo-title">{todo.name}</h2>
+                  <div>{todo.description}</div>
                 </div>
                 <StLink to={`/${todo.id}`} key={todo.id}>
                   <div>View Detail ...</div>

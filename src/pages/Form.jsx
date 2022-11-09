@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import nextId from "react-id-generator";
 import { addTodo } from "../redux/modules/todos.js";
 
 const Form = () => {
   const id = nextId();
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [todo, setTodo] = useState({
     id: 0,
     name: "",
-    body: "",
-    isDone: false,
+    birth_place: "",
+    birth_date: "",
+    address: "",
+    phone: "",
+    description: "",
   });
 
   // const todos = useSelector((state) => state.todos.todos);
@@ -23,22 +28,33 @@ const Form = () => {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    if (todo.name.trim() === "" || todo.body.trim() === "") return;
-
+    if (todo.name.trim() === "" || todo.description.trim() === "") return;
+    
     dispatch(addTodo({ ...todo, id }));
     setTodo({
       id: 0,
       name: "",
-      body: "",
-      isDone: false,
+      birth_place: "",
+      birth_date: "",
+      address: "",
+      phone: "",
+      description: "",
     });
+
+    navigate("/");
   };
 
   return (
     <StAddForm onSubmit={onSubmitHandler}>
-      <div>
-        <h1>Form for Employee</h1>
-      </div>
+      <StButton
+        borderColor="#ddd"
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        Back to List
+      </StButton>
+      <StTitle>Form for Employee</StTitle>
       <StInputGroup>
         <StFormLabel>Name</StFormLabel>
         <StAddInput
@@ -85,29 +101,26 @@ const Form = () => {
         />
       </StInputGroup>
       <StInputGroup>
-        <StFormLabel>Status</StFormLabel>
-        <StAddInput
-          type="text"
-          name="status"
-          value={todo.status}
-          onChange={onChangeHandler}
-        />
-      </StInputGroup>
-      <StInputGroup>
         <StFormLabel>Description</StFormLabel>
-        <StAddInput
+        <StAddTextarea
           type="text"
           name="description"
           value={todo.description}
           onChange={onChangeHandler}
         />
       </StInputGroup>
-      <StAddButton>Add New</StAddButton>
+      <StAddButton onClick={onSubmitHandler} 
+      >Add New</StAddButton>
     </StAddForm>
   );
 };
 
 export default Form;
+
+const StTitle = styled.h1`
+  text-align: center;
+  margin-top: 0;
+`;
 
 const StInputGroup = styled.div`
   display: flex;
@@ -124,10 +137,10 @@ const StFormLabel = styled.label`
 const StAddForm = styled.form`
   background-color: #eee;
   border-radius: 12px;
-  margin: 0 auto;
-  margin-top: 50px;
+  margin: 30px auto;
   align-items: center;
   padding: 30px;
+  padding-top: 10px;
   gap: 20px;
   width: 55%;
 `;
@@ -141,6 +154,15 @@ const StAddInput = styled.input`
   margin: 10px;
 `;
 
+const StAddTextarea = styled.textarea`
+  height: 100px;
+  width: 500px;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  margin: 10px;
+`;
+
 const StAddButton = styled.button`
   border: none;
   height: 40px;
@@ -150,5 +172,16 @@ const StAddButton = styled.button`
   width: 140px;
   color: #fff;
   font-weight: 700;
+  display: block;
+  margin: 0 auto;
   margin-top: 20px;
+`;
+
+const StButton = styled.button`
+  border: 1px solid ${({ borderColor }) => borderColor};
+  height: 40px;
+  width: 120px;
+  background-color: #fff;
+  border-radius: 12px;
+  cursor: pointer;
 `;

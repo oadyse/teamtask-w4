@@ -2,7 +2,6 @@
 const ADD_TODO = "ADD_TODO";
 const GET_TODO_BY_ID = "GET_TODO_BY_ID";
 const DELETE_TODO = "DELETE_TODO";
-const TOGGLE_STATUS_TODO = "TOGGLE_STATUS_TODO";
 
 // Action Creator
 // Todo ADD action creator
@@ -21,14 +20,6 @@ export const deleteTodo = (payload) => {
     };
 };
 
-// Todo IS DONE action creator
-export const toggleStatusTodo = (payload) => {
-    return {
-        type: TOGGLE_STATUS_TODO,
-        payload,
-    };
-};
-
 // GET ID action creator
 export const getTodoByID = (payload) => {
     return {
@@ -42,16 +33,22 @@ const initialState = {
     todos: [
         {
             id: "1",
-            title: "React",
-            body: "React Week 2",
-            isDone: false,
+            name: "Liam",
+            birth_place: "Manado",
+            birth_date: "31 Jan 2001",
+            address: "Manado",
+            phone: "085784378582",
+            description: "hahahahhahahahahhaha",
         },
     ],
     todo: {
         id: "0",
-        title: "",
-        body: "",
-        isDone: false,
+        name: "",
+        birth_place: "",
+        birth_date: "",
+        address: "",
+        phone: "",
+        description: "",
     },
 };
 
@@ -67,21 +64,6 @@ const todos = (state = initialState, action) => {
             return {
                 ...state,
                 todos: state.todos.filter((todo) => todo.id !== action.payload),
-            };
-
-        case TOGGLE_STATUS_TODO:
-            return {
-                ...state,
-                todos: state.todos.map((todo) => {
-                    if (todo.id === action.payload) {
-                        return {
-                            ...todo,
-                            isDone: !todo.isDone,
-                        };
-                    } else {
-                        return todo;
-                    }
-                }),
             };
 
         case GET_TODO_BY_ID:

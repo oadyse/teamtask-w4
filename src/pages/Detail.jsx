@@ -20,7 +20,6 @@ const Detail = () => {
       <StDialog>
         <div>
           <StDialogHeader>
-            <div>ID :{todo.id}</div>
             <StButton
               borderColor="#ddd"
               onClick={() => {
@@ -30,8 +29,23 @@ const Detail = () => {
               Back to List
             </StButton>
           </StDialogHeader>
-          <StTitle>{todo.title}</StTitle>
-          <StBody>{todo.body}</StBody>
+          <StTitle>{todo.name}</StTitle>
+          <StGroup>
+            <StLabel>Place & Date Of Birth</StLabel>
+            <StValue>: {todo.birth_place}, {todo.birth_date}</StValue>
+          </StGroup>
+          <StGroup>
+            <StLabel>Address</StLabel>
+            <StValue>: {todo.address}</StValue>
+          </StGroup>
+          <StGroup>
+            <StLabel>Number Phone</StLabel>
+            <StValue>: {todo.phone}</StValue>
+          </StGroup>
+          <StGroup>
+            <StLabel>Description</StLabel>
+            <StValue>: {todo.description}</StValue>
+          </StGroup>
         </div>
       </StDialog>
     </StContainer>
@@ -70,8 +84,21 @@ const StTitle = styled.h1`
   padding: 0 24px;
 `;
 
-const StBody = styled.main`
-  padding: 0 24px;
+const StGroup = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+`;
+
+const StLabel = styled.label`
+  font-size: 16px;
+  font-weight: 700;
+  width: 30%;
+  padding-left: 24px;
+`;
+
+const StValue = styled.main`
+  width: 70%;
 `;
 
 const StButton = styled.button`
