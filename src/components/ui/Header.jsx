@@ -12,8 +12,8 @@ const Header = () => {
       <StSearch>
         <SearchInput >
         <div>
-                     <MdSearch className='search-icons' size='1.3em' />
-                     <input type='text' placeholder='type to search...' />
+                     {/* <MdSearch className='search-icons' size='0.5em' /> */}
+                     <input type='text' placeholder='type here to search...' />
         </div>
         </SearchInput>
       </StSearch>
@@ -34,7 +34,7 @@ const StSearch = styled.div`
   padding: 0px;
   margin-top: -5px;
   margin-bottom: -20px;
-  margin-left: 450px;
+  margin-left: 525px;
 `;
 
 const SearchInput = styled.div`
