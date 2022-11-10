@@ -19,12 +19,6 @@ const List = () => {
         {todos.map((todo) => {
             return (
               <StTodoContainer key={todo.id}>
-                <StButton
-                  borderColor="red"
-                  onClick={() => onDeleteTodo(todo.id)}
-                >
-                  ❌
-                </StButton>
                 <div>
                   <h2 className="todo-title">{todo.name}</h2>
                   <div>{todo.description}</div>
@@ -32,6 +26,18 @@ const List = () => {
                 <StLink to={`/${todo.id}`} key={todo.id}>
                   <div>View Detail ...</div>
                 </StLink>
+                <StButton
+                  borderColor="yellow"
+                  to={`/edit/${todo.id}`} key={todo.id}
+                >
+                  Edit
+                </StButton>
+                <StButton
+                  borderColor="red"
+                  onClick={() => onDeleteTodo(todo.id)}
+                >
+                  Delete
+                </StButton>
               </StTodoContainer>
             );
         })}
@@ -70,15 +76,16 @@ const StTodoContainer = styled.div`
 const StLink = styled(Link)`
   text-decoration: none;
   float: right;
+  margin-top: 25px;
 `;
 
 const StButton = styled.button`
   border: 1px solid ${({ borderColor }) => borderColor};
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: auto;
   background-color: #fff;
   border-radius: 12px;
   cursor: pointer;
-  float: right;
-  margin-right: 0;
+  margin-right: 10px;
+  margin-top: 20px;
 `;
