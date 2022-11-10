@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getTodoByID } from "../redux/modules/todos.js";
+import Comment from "../components/ui/Comment";
+// import ListComment from "../features/todos/components/ListComment";
 
 const Detail = () => {
   const dispatch = useDispatch();
@@ -48,6 +50,10 @@ const Detail = () => {
           </StGroup>
         </div>
       </StDialog>
+      <StDialog>
+        <Comment />
+        {/* <ListComment /> */}
+      </StDialog>
     </StContainer>
   );
 };
@@ -55,12 +61,11 @@ const Detail = () => {
 export default Detail;
 
 const StContainer = styled.div`
-  border: 2px solid #eee;
   width: 100%;
-  height: 100vh;
+  height: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 `;
 
 const StDialog = styled.div`

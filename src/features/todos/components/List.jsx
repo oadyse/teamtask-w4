@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, React } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteTodo } from "../../../redux/modules/todos.js";
@@ -14,7 +14,7 @@ const List = () => {
 
   return (
     <StListContainer>
-      <h2>List</h2>
+      <StTitle>Employees List</StTitle>
       <StListWrapper>
         {todos.map((todo) => {
             return (
@@ -42,8 +42,13 @@ const List = () => {
 
 export default List;
 
+const StTitle = styled.h1`
+  text-align: center;
+  margin-top: 0;
+`;
+
 const StListContainer = styled.div`
-  padding: 0 120px;
+  margin: 0 auto;
   width: 1000px;
 `;
 
